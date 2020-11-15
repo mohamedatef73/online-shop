@@ -13,7 +13,7 @@ const ProducScreen = ({ match }) => {
             setProduct(data)
         }
         fetchProduct()
-    }, [])
+    }, [match])
  
     return (
         <>
