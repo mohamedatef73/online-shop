@@ -18,7 +18,7 @@ export const productListReducer = (state= {products : []}, action) => {
 export const productDetailsReducer = (state= {product:{ reviews: []}}, action) => {
     switch (action.type){
         case actions.PRODUCT_DETAILS_REQUEST:
-            return {loading : true, ...state}
+            return {loading : true}
 
             case actions.PRODUCT_DETAILS_SUCCESS:
                 return {loading: false, product: action.payload}

@@ -11,6 +11,7 @@ export const CartScreen = ({ match, location, history }) => {
     const productId = match.params.id
     const dispatch = useDispatch()
     const cart = useSelector(state => state.cart)
+
     const { cartItems } = cart
 
     const qty = location.search ? Number(location.search.split('=')[1]) : 1
@@ -55,7 +56,7 @@ export const CartScreen = ({ match, location, history }) => {
                                                 onChange={(e) =>
                                                     dispatch(addToCart(item.product, Number(e.target.value)))
                                                 }>
-                                            {[...Array(item.countInStuck).keys()].map((x) => (
+                                            {[...Array(Number(item.countInStock)).keys()].map((x) => (
                                                 <option key={x + 1} value={x + 1}>
                                                     {x + 1}
                                                 </option>
@@ -74,6 +75,7 @@ export const CartScreen = ({ match, location, history }) => {
                         </ListGroup>
                     )}
 
+            </Col>
                     <Col md={4}>
                         <Card>
                             <ListGroup variant='flush'>
@@ -91,7 +93,6 @@ export const CartScreen = ({ match, location, history }) => {
                             </ListGroup>
                         </Card>
                     </Col>
-            </Col>
         </Row>
     )
 }
