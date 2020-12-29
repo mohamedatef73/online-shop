@@ -1,13 +1,15 @@
-import React, { useEffect } from 'react'
+import React, {useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { Row, Col, Image, ListGroup, Card, Button } from 'react-bootstrap'
+import { Row, Col, Image, ListGroup, Card, Button, Form } from 'react-bootstrap'
 import Rating from '../component/Rating'
 import { useDispatch, useSelector } from 'react-redux'
 import { ProductDetails } from '../actions/productActions'
 import Loader from '../component/Loader'
 import Message from '../component/Message'
 
-const ProducScreen = ({ match }) => {
+const ProducScreen = ({ history,match }) => {
+
+    const [pieces, setPieces] = useState(1)
 
     const dispatch = useDispatch()
 
@@ -18,8 +20,11 @@ const ProducScreen = ({ match }) => {
         dispatch(ProductDetails(match.params.id))
     }, [dispatch, match])
 
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
+=======
+>>>>>>> 2a7c1fb7f6c2d970d6def72c1756299024dde90b
     const addToCartHandler = () =>{
         history.push(`/cart/${match.params.id}?pieces=${pieces}`)
     }
@@ -31,11 +36,15 @@ const ProducScreen = ({ match }) => {
         beforeContent = <Message variant='danger'>{error}</Message>
     }
 
+<<<<<<< HEAD
 >>>>>>> Stashed changes
+=======
+>>>>>>> 2a7c1fb7f6c2d970d6def72c1756299024dde90b
     return (
         <>
             <Link className='btn btn-light my-3' to='/'>Back to</Link>
 
+<<<<<<< HEAD
 <<<<<<< Updated upstream
             {loading ? (<Loader />) : error ? (<Message variant='danger'>{error}</Message>) :
     (
@@ -89,6 +98,9 @@ const ProducScreen = ({ match }) => {
                                     Add to Cart
 =======
             {beforeContent?beforeContent :
+=======
+            {beforeContent ? beforeContent :
+>>>>>>> 2a7c1fb7f6c2d970d6def72c1756299024dde90b
                 (
                     <Row>
                         <Col md={6}>
@@ -164,14 +176,17 @@ const ProducScreen = ({ match }) => {
                                          className='btn-block' type='button'
                                             disabled={product.countInStock === '0'}>
                                             Add to Cart
+<<<<<<< HEAD
 >>>>>>> Stashed changes
+=======
+>>>>>>> 2a7c1fb7f6c2d970d6def72c1756299024dde90b
                         </Button>
-                            </ListGroup.Item>
-                        </ListGroup>
-                    </Card>
-                </Col>
-            </Row>
-    )}
+                                    </ListGroup.Item>
+                                </ListGroup>
+                            </Card>
+                        </Col>
+                    </Row>
+                )}
         </>
     )
 }

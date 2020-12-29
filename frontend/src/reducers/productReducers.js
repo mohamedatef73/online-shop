@@ -21,7 +21,7 @@ export const productDetailsReducer = (state= {product:{ reviews: []}}, action) =
             return {loading : true}
 
             case actions.PRODUCT_DETAILS_SUCCESS:
-                return {loading: false, products: action.payload}
+                return {loading: false, product: action.payload}
 
                 case actions.PRODUCT_DETAILS_FAIL:
                     return {loading : false, error:action.payload}
