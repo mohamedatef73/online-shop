@@ -35,7 +35,7 @@ const ProducScreen = ({ history,match }) => {
         <>
             <Link className='btn btn-light my-3' to='/'>Back to</Link>
 
-            {beforeContent?beforeContent :
+            {beforeContent ? beforeContent :
                 (
                     <Row>
                         <Col md={6}>

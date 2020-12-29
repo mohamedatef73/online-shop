@@ -32,6 +32,10 @@ export const CartScreen = ({ match, location, history }) => {
        history.push('/login?redirect=shipping')
     }
 
+    const totalPrice = cartItems.reduce((acc,item) => acc + item.qty * item.price , 0).toFixed(2)
+
+    const totalItems = cartItems.reduce((acc,item) => acc + item.qty,0)
+
     return (
         <Row>
             <Col md={8}>
@@ -81,9 +85,9 @@ export const CartScreen = ({ match, location, history }) => {
                             <ListGroup variant='flush'>
                                 <ListGroup.Item>
                                     <h2>
-                                    Total Items ({cartItems.reduce((acc,item) => acc + item.qty,0)})
+                                    Total Items {totalItems}
                                     </h2>
-                                    Total Price({cartItems.reduce((acc,item) => acc + item.qty * item.price , 0).toFixed(2)})
+                                    Total Price {totalPrice}
                                 </ListGroup.Item>
                                 <ListGroup.Item>
                                     <Button type='button' className='btn-block'
