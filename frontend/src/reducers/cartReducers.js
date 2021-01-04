@@ -5,28 +5,23 @@ export const cartReducer = (state = { cartItems: [] }, action) => {
     switch (action.type) {
         case CART_ADD_ITEM:
 
-                 return {
+        const item = action.payload
+        const existItem = state.cartItems.find((cartItems) => cartItems.product === item.product)
+
+        if(existItem){
+            return {
                 ...state,
-                items: setCartItems(state.items, action.payload.data)
+                cartItems:state.cartItems.map((cartItems) =>
+                cartItems.product === existItem.product ? item: cartItems
+
+                )
             }
+        }else{
+            return{
+                ...state,
+                cartItems: [...state.cartItems,item]
 
-        // const item = action.payload
-        // const existItem = state.cartItems.find((cartItems) => cartItems.product === item.product)
-
-        // if(existItem){
-        //     return {
-        //         ...state,
-        //         cartItems:state.cartItems.map((cartItems) =>
-        //         cartItems.product === existItem.product ? item: cartItems
-
-        //         )
-        //     }
-        // }else{
-        //     return{
-        //         ...state,
-        //         cartItems: [...state.cartItems,item]
-
-        //     }
+        }}
 
 
         case CART_REMOVE_ITEM:
