@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from 'react'
-import { Form, Col, Row, Button } from 'react-bootstrap'
+import { Form, Col, Row, Button} from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../component/Message'
 import Loader from '../component/Loader'
 import { profileUser, updateProfileUser } from '../actions/userActions'
 import Swal from 'sweetalert2'
 import { USER_UPDATE_PROFILE_RESET } from '../constants/userConstants'
+import { logout } from '../actions/userActions'
+
+
+
+
 
 
 const LoginScreen = ({ history }) => {
@@ -47,7 +52,7 @@ const LoginScreen = ({ history }) => {
             }
         }
 
-    }, [dispatch, history, userInfo, user])
+    }, [dispatch, history, userInfo, user, success])
 
     const submitHandler = (e) => {
         e.preventDefault()
@@ -74,10 +79,14 @@ const LoginScreen = ({ history }) => {
     const successMessage = success ? (<Message variant='success'>Profile Updated</Message>) : null
 
 
+    const logoutHandler = () => {
+        dispatch(logout())
+    }
+
 
     return (
         <Row>
-            <Col md={3}>
+            <Col md={6}>
 
                 <h1>Profile User</h1>
 
@@ -128,8 +137,18 @@ const LoginScreen = ({ history }) => {
                 </Form>
             </Col>
 
-            <Col md={9}>
-                <h2>My Orders</h2>
+
+            <Col md={6}>
+                <Form className='float-right'>
+                    <h1>My Orders</h1>
+
+                    <Button className='btn btn-secondary' onClick={logoutHandler}>
+                        <h3>
+                            Logout
+                        </h3>
+                    </Button>
+                </Form>
+
 
             </Col>
         </Row>

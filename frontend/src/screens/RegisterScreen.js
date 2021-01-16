@@ -15,7 +15,6 @@ const LoginScreen = ({ location, history }) => {
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
 
-
     const redirect = location.search ? location.search.split('=')[1] : '/'
 
     const dispatch = useDispatch()
@@ -46,7 +45,8 @@ const LoginScreen = ({ location, history }) => {
         }
     }
 
-    const errMessage = error ? (<Message variant='danger'>{error}</Message>) : null
+
+    const errMessage = error ? (<Message variant='warning'>{error}</Message>) : null
     const loadData = loading ? (<Loader />) : null
 
 

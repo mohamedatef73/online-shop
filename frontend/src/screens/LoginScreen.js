@@ -6,6 +6,8 @@ import Message from '../component/Message'
 import Loader from '../component/Loader'
 import { login } from '../actions/userActions'
 import { Link } from 'react-router-dom'
+// import SweetAlert from 'sweetalert2-react';
+
 
 
 const LoginScreen = ({ location, history }) => {
@@ -32,7 +34,18 @@ const LoginScreen = ({ location, history }) => {
     }
 
     const errMessage = error ? (<Message variant='danger'>{error}</Message>) : null
-    const loadData = loading ? (<Loader/>) : null
+
+    // const errMessage = error ?
+    //     (
+    //         <div>
+    //             <SweetAlert
+    //                 show={`error`}
+    //             >
+    //             </SweetAlert>
+    //         </div>)
+    //     : null
+
+    const loadData = loading ? (<Loader />) : null
 
     return (
         <FormContainer>
@@ -45,7 +58,7 @@ const LoginScreen = ({ location, history }) => {
                 <Form.Group controlId='email'>
                     <Form.Label>Email Address</Form.Label>
                     <Form.Control
-                     placeholder='please type your email'
+                        placeholder='please type your email'
                         value={email} type='email'
                         onChange={(e) => setEmail(e.target.value)}>
                     </Form.Control>

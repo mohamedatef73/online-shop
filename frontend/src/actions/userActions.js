@@ -1,4 +1,5 @@
 import axios from "axios"
+import Swal from "sweetalert2"
 import * as actions from '../constants/userConstants'
 
 export const login = (email, password) => async (dispatch) => {
@@ -78,6 +79,14 @@ export const register = (name, email, password) => async (dispatch) => {
             error.response.data.message : error.message
 
 
+        })
+
+        Swal.fire({
+            title: 'Error!',
+            text: error.response && error.response.data.message ?
+            error.response.data.message : error.message,
+            icon: 'error',
+            confirmButtonText: 'Cool'
         })
     }
 }
